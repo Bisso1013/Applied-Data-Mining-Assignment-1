@@ -1,13 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
-# Set seed for reproducibility
 np.random.seed(42)
 
 
-# --------------------------------------------------
-# Utility Functions
-# --------------------------------------------------
+'Utility Functions'
 
 def softmax(logits):
     logits = logits - np.max(logits)
@@ -27,14 +23,12 @@ def cosine_similarity(a, b):
     return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 
 
-# --------------------------------------------------
-# 1️⃣ Similarity Visualization
-# --------------------------------------------------
+'Similarity Visualization'
 
 def similarity_visualization():
     print("Generating Similarity Matrix...")
     logits = np.random.randn(10)
-    temps = [0.01, 0.3, 0.7, 1.0]  # Changed 0.0 to 0.01 to avoid flat lines
+    temps = [0.01, 0.3, 0.7, 1.0]  
     distributions = [temperature_scale(logits, t) for t in temps]
 
     similarity_matrix = np.zeros((4, 4))
@@ -51,17 +45,14 @@ def similarity_visualization():
     plt.xlabel("Temperature")
     plt.ylabel("Temperature")
 
-    # Save and Show
+    
     plt.savefig("similarity_matrix.png")
-    plt.show()  # <--- This opens the window
+    plt.show() 
 
-
-# --------------------------------------------------
-# 2️⃣ Length Distribution Analysis
-# --------------------------------------------------
+'Length Distribution Analysis'
 
 def simulate_length(T, base_len=50):
-    # Higher temperature = more randomness in length
+   
     return int(base_len + T * np.random.randint(5, 50))
 
 
@@ -79,17 +70,15 @@ def length_distribution_analysis():
     plt.xlabel("Token Length")
     plt.ylabel("Frequency")
 
-    # Save and Show
+   
     plt.savefig("length_distribution.png")
-    plt.show()  # <--- This opens the window
+    plt.show() 
 
 
-# --------------------------------------------------
-# 3️⃣ MAIN EXECUTION (The "On" Switch)
-# --------------------------------------------------
+'Execution'
 
 if __name__ == "__main__":
-    # This part tells Python to actually RUN the code above
+    
     similarity_visualization()
     length_distribution_analysis()
     print("Done! Check your project folder for the .png files.")
